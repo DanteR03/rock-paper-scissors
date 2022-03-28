@@ -16,37 +16,49 @@ function playRound() {
 
   playerSelection = playerInput.toUpperCase();
 
-  playerScore = 0
-
-  computerScore = 0
-
   if (playerSelection === computerSelection) {
     console.log ('Tie');
-    playerScore, computerScore;
+    return 0;
   } else if (playerSelection === 'ROCK' && computerSelection === 'SCISSORS') {
     console.log ('You win! Rock beats scissors!');
-    ++playerScore;
+    return 1;
   } else if (playerSelection === 'ROCK' && computerSelection === 'PAPER') {
     console.log ('You lose! Paper beats rock!');
-    ++computerScore;
+    return 2;
   } else if (playerSelection === 'PAPER' && computerSelection === 'ROCK') {
     console.log ('You win! Paper beats rock!');
-    ++playerScore;
+    return 1;
   } else if (playerSelection === 'PAPER' && computerSelection === 'SCISSORS') {
     console.log ('You lose! Scissors beat paper!');
-    ++computerScore;
+    return 2;
   } else if (playerSelection === 'SCISSORS' && computerSelection === 'PAPER') {
     console.log ('You win! Scissors beat paper!');
-    ++playerScore;
+    return 1;
   } else if (playerSelection === 'SCISSORS' && computerSelection === 'ROCK') {
     console.log ('You lose! Rock beats scissors!');
-    ++computerScore;
+    return 2;
   }
-  alert(`Computer score: ${computerScore}, Player score: ${playerScore}`);
 }
 // Keep track of score
+computerScore = 0;
+playerScore = 0;
 function game() {
   for (let round = 0; round < 5; round++) {
-    playRound()
+    roundResult = playRound();
+    if (roundResult === 0) {
+      computerScore, playerScore;
+    } else if (roundResult === 1) {
+      ++playerScore;
+    } else {
+      ++computerScore;
+    }
+    alert(`Computer score: ${computerScore}, Player score: ${playerScore}`);
+  }
+  if (computerScore === playerScore) {
+    alert ('It\'s a tie!');
+  } else if (computerScore > playerScore) {
+    alert ('You lose to computer.');
+  } else {
+    alert ('You win! Congratulations!');
   }
 }
