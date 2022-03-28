@@ -1,34 +1,42 @@
 // Generate computer choice
-let computerSelection = '';
-
 function computerPlay() {
   const options = ['ROCK', 'PAPER', 'SCISSORS'];
   const random = options[Math.floor(Math.random() * options.length)];
   return random;
 }
-computerSelection = computerPlay();
 // Ask player input
 let playerInput = prompt('Rock, Paper, Scissors?')
 // Make player input same case as computer input
-let playerSelection = playerInput.toUpperCase();
 // Compare player and computer input 
-function playRound(playerSelection, computerSelection) {
-  if (playerSelection === computerSelection) {
-    return 'Tie!';
-  } else if (playerSelection === 'ROCK' && computerSelection === 'SCISSORS') {
-    return 'You win! Rock beats scissors!';
-  } else if (playerSelection === 'ROCK' && computerSelection === 'PAPER') {
-    return 'You lose! Paper beats rock!';
-  } else if (playerSelection === 'PAPER' && computerSelection === 'ROCK') {
-    return 'You win! Paper beats rock!';
-  } else if (playerSelection === 'PAPER' && computerSelection === 'SCISSORS') {
-    return 'You lose! Scissors beat paper!';
-  } else if (playerSelection === 'SCISSORS' && computerSelection === 'PAPER') {
-    return 'You win! Scissors beat paper!';
-  } else if (playerSelection === 'SCISSORS' && computerSelection === 'ROCK') {
-    return 'You lose! Rock beats scissors!';
-  }
-}
 // Determine winner
 // Display winner
+function playRound() {
+  computerSelection = computerPlay();
+
+  playerSelection = playerInput.toUpperCase();
+
+  if (playerSelection === computerSelection) {
+    console.log ('Tie');
+    return 0;
+  } else if (playerSelection === 'ROCK' && computerSelection === 'SCISSORS') {
+    console.log ('You win! Rock beats scissors!');
+    return 1;
+  } else if (playerSelection === 'ROCK' && computerSelection === 'PAPER') {
+    console.log ('You lose! Paper beats rock!');
+    return 2;
+  } else if (playerSelection === 'PAPER' && computerSelection === 'ROCK') {
+    console.log ('You win! Paper beats rock!');
+    return 1;
+  } else if (playerSelection === 'PAPER' && computerSelection === 'SCISSORS') {
+    console.log ('You lose! Scissors beat paper!');
+    return 2;
+  } else if (playerSelection === 'SCISSORS' && computerSelection === 'PAPER') {
+    console.log ('You win! Scissors beat paper!');
+    return 1;
+  } else if (playerSelection === 'SCISSORS' && computerSelection === 'ROCK') {
+    console.log ('You lose! Rock beats scissors!');
+    return 2;
+  }
+}
 // Keep track of score
+// Make game repeat until someone wins
