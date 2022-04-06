@@ -4,13 +4,36 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Rock Paper Scissors</title>
-  <script src="rockpaperscissors.js">
-  </script>
+  <title>Rock, Paper, Scissors</title>
+  <script src="rockpaperscissors.js" defer></script>
+  <link rel="stylesheet" href="rockpaperscissors.css">
 </head>
 
 <body>
-  <h1>Rock Paper Scissors</h1>
+  <h1>Rock, Paper, Scissors</h1>
+  <h2>Choose your weapon</h2>
+  <h3>Score 5 first to win the game </h3>
+  <div class = "round-container">
+    <div class="player-container">
+      <p>Player</p>
+      <img>
+      <p>Score:</p>
+    </div>
+    <div class="computer-container">
+      <p>Computer</p>
+      <img>
+      <p>Score:</p>
+    </div>
+  </div>
+  <div class="game-score">
+    <p>Player score:</p>
+    <p>Computer score:</p>
+  </div>
+  <div class="img-container">
+    <img id="rock" src="./images/Rock.svg">
+    <img id="paper" src="./images/Paper.svg">
+    <img id="scissors" src="./images/Scissors.svg">
+  </div>
 </body>
 
 </html>
