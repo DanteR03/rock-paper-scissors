@@ -29,7 +29,11 @@ function playScissors() {
 function playGame() {
   computerSelection = computerPlay();
 
+  computerPickImage(computerSelection);
+
   playerSelection = playerInput;
+
+  playerPickImage(playerSelection);
 
   const message = document.querySelector("h3");
 
@@ -119,6 +123,34 @@ function resetButton() {
   paper.addEventListener("click", playPaper);
   scissors.addEventListener("click", playScissors);
   button.classList.add("hidden");
+}
+
+function computerPickImage(choice) {
+  const computerPick = document.querySelector("#computerPick");
+  if (choice === "ROCK") {
+    computerPick.setAttribute("src", "./images/Rock.svg");
+    computerPick.setAttribute("alt", "Rock");
+  } else if (choice === "PAPER") {
+    computerPick.setAttribute("src", "./images/Paper.svg");
+    computerPick.setAttribute("alt", "Paper");
+  } else if (choice === "SCISSORS") {
+    computerPick.setAttribute("src", "./images/Scissors.svg");
+    computerPick.setAttribute("alt", "Scissors");
+  }
+}
+
+function playerPickImage(choice) {
+  const playerPick = document.querySelector("#playerPick");
+  if (choice === "ROCK") {
+    playerPick.setAttribute("src", "./images/Rock.svg");
+    playerPick.setAttribute("alt", "Rock");
+  } else if (choice === "PAPER") {
+    playerPick.setAttribute("src", "./images/Paper.svg");
+    playerPick.setAttribute("alt", "Paper");
+  } else if (choice === "SCISSORS") {
+    playerPick.setAttribute("src", "./images/Scissors.svg");
+    playerPick.setAttribute("alt", "Scissors");
+  }
 }
 
 const rock = document.querySelector("#rock");
