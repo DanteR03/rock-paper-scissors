@@ -35,3 +35,15 @@ img {
   gap: 100px;
   margin: 50px;
 }
+
+.choice {
+  cursor: pointer;
+}
+
+button {
+  cursor: pointer;
+}
+
+.hidden {
+  visibility: hidden;
+}
