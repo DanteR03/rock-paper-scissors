@@ -11,19 +11,22 @@ function computerPlay() {
 function playRock() {
   playerInput = "ROCK";
   playGame();
+  victoryCheck();
 }
 
 function playPaper() {
   playerInput = "PAPER";
   playGame();
+  victoryCheck();
 }
 
 function playScissors() {
   playerInput = "SCISSORS";
   playGame();
+  victoryCheck();
 }
 
-function playRound() {
+function playGame() {
   computerSelection = computerPlay();
 
   playerSelection = playerInput;
@@ -92,6 +95,30 @@ function victoryCheck() {
     paper.removeEventListener('click', playPaper);
     scissors.removeEventListener('click', playScissors);
     button.classList.remove("hidden");
+  }
+}
+
+function resetButton() {
+  playerTotal = 0;
+  computerTotal = 0;
+
+  const message = document.querySelector("h3");
+
+  const playerScore = document.querySelector("#playerScore");
+  const computerScore = document.querySelector("#computerScore");
+
+  const totalPlayerScore = document.querySelector("#playerTotal");
+  const totalComputerScore = document.querySelector("#computerTotal");
+
+  message.textContent = "Score 5 first to win the game";
+  playerScore.textContent = "Score: 0";
+  computerScore.textContent = "Score: 0";
+  totalPlayerScore.textContent = "Player score: 0";
+  totalComputerScore.textContent = "Computer score: 0";
+  rock.addEventListener("click", playRock);
+  paper.addEventListener("click", playPaper);
+  scissors.addEventListener("click", playScissors);
+  button.classList.add("hidden");
 }
 
 const rock = document.querySelector("#rock");
@@ -100,4 +127,5 @@ const paper = document.querySelector("#paper");
 paper.addEventListener("click", playPaper);
 const scissors = document.querySelector("#scissors");
 scissors.addEventListener("click", playScissors);
-const button = document.querySelector("button")
+const button = document.querySelector("button");
+button.addEventListener("click", resetButton);
