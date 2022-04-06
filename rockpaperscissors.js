@@ -1,4 +1,3 @@
-// Generate computer choice
 let playerTotal = 0;
 let computerTotal = 0;
 
@@ -114,6 +113,9 @@ function resetButton() {
   const totalPlayerScore = document.querySelector("#playerTotal");
   const totalComputerScore = document.querySelector("#computerTotal");
 
+  const computerPick = document.querySelector("#computerPick");
+  const playerPick = document.querySelector("#playerPick");
+
   message.textContent = "Score 5 first to win the game";
   playerScore.textContent = "Score: 0";
   computerScore.textContent = "Score: 0";
@@ -123,6 +125,10 @@ function resetButton() {
   paper.addEventListener("click", playPaper);
   scissors.addEventListener("click", playScissors);
   button.classList.add("hidden");
+  computerPick.setAttribute("src", "./images/Rock.svg");
+  computerPick.setAttribute("alt", "Rock");
+  playerPick.setAttribute("src", "./images/Rock.svg");
+  playerPick.setAttribute("alt", "Rock");
 }
 
 function computerPickImage(choice) {
