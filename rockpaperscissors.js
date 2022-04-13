@@ -38,61 +38,54 @@ function playGame() {
 
   let score = 0;
 
-  const playerScore = document.querySelector("#playerScore");
-  const computerScore = document.querySelector("#computerScore");
-
-  const totalPlayerScore = document.querySelector("#playerTotal");
-  const totalComputerScore = document.querySelector("#computerTotal");
+  const totalPlayerScore = document.querySelector("#playerScore");
+  const totalComputerScore = document.querySelector("#computerScore");
 
   if (playerSelection === computerSelection) {
     message.textContent = "Tie";
     score = 0;
-  } else if (playerSelection === "ROCK" && computerSelection === "SCISSORS") {
-    message.textContent = "You win! Rock beats scissors!";
-    score = 1;
-  } else if (playerSelection === "ROCK" && computerSelection === "PAPER") {
-    message.textContent = "You lose! Paper beats rock!";
-    score = 2;
-  } else if (playerSelection === "PAPER" && computerSelection === "ROCK") {
-    message.textContent = "You win! Paper beats rock!";
-    score = 1;
-  } else if (playerSelection === "PAPER" && computerSelection === "SCISSORS") {
-    message.textContent = "You lose! Scissors beat paper!";
-    score = 2;
-  } else if (playerSelection === "SCISSORS" && computerSelection === "PAPER") {
-    message.textContent = "You win! Scissors beat paper!";
-    score = 1;
-  } else if (playerSelection === "SCISSORS" && computerSelection === "ROCK") {
-    message.textContent = "You lose! Rock beats scissors!";
-    score = 2;
-  }
+  } else if (playerSelection === "ROCK") {
+      if (computerSelection === "SCISSORS") {
+        message.textContent = "You win! Rock beats scissors!";
+        score = 1}
+      else if (computerSelection === "PAPER") {
+        message.textContent = "You lose! Paper beats rock!";
+        score = 2}
+  } else if (playerSelection === "PAPER") {
+      if (computerSelection === "ROCK") {
+        message.textContent = "You win! Paper beats rock!";
+        score = 1;}
+      else if (computerSelection === "SCISSORS") {
+        message.textContent = "You lose! Scissors beat paper!";
+        score = 2;}
+  } else if (playerSelection === "SCISSORS") {
+      if (computerSelection === "PAPER") {
+        message.textContent = "You win! Scissors beat paper!";
+        score = 1;}
+      else if (computerSelection === "ROCK") {
+        message.textContent = "You lose! Rock beats scissors!";
+        score = 2;}
+    }
+  
 
   if (score === 1) {
-    playerScore.textContent = "Score: 1";
-    computerScore.textContent = "Score: 0";
     playerTotal = ++playerTotal;
     totalPlayerScore.textContent = `Player score: ${playerTotal}`;
   } else if (score === 2) {
-    computerScore.textContent = "Score: 1";
-    playerScore.textContent = "Score: 0";
     computerTotal = ++computerTotal;
     totalComputerScore.textContent = `Computer score: ${computerTotal}`;
-  } else {
-    playerScore.textContent = "Score: 0";
-    computerScore.textContent = "Score: 0";
   }
 }
 
 function victoryCheck() {
+  const message = document.querySelector("h3");
   if (playerTotal === 5) {
-    const message = document.querySelector("h3");
     message.textContent = "Victory! Congratulations!"
     rock.removeEventListener('click', playRock);
     paper.removeEventListener('click', playPaper);
     scissors.removeEventListener('click', playScissors);
     button.classList.remove("hidden");
   } else if (computerTotal === 5) {
-    const message = document.querySelector("h3");
     message.textContent = "Defeat! Better luck next time!"
     rock.removeEventListener('click', playRock);
     paper.removeEventListener('click', playPaper);
@@ -107,18 +100,13 @@ function resetButton() {
 
   const message = document.querySelector("h3");
 
-  const playerScore = document.querySelector("#playerScore");
-  const computerScore = document.querySelector("#computerScore");
-
-  const totalPlayerScore = document.querySelector("#playerTotal");
-  const totalComputerScore = document.querySelector("#computerTotal");
+  const totalPlayerScore = document.querySelector("#playerScore");
+  const totalComputerScore = document.querySelector("#computerScore");
 
   const computerPick = document.querySelector("#computerPick");
   const playerPick = document.querySelector("#playerPick");
 
   message.textContent = "Score 5 first to win the game";
-  playerScore.textContent = "Score: 0";
-  computerScore.textContent = "Score: 0";
   totalPlayerScore.textContent = "Player score: 0";
   totalComputerScore.textContent = "Computer score: 0";
   rock.addEventListener("click", playRock);
