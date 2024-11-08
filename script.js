@@ -20,4 +20,14 @@ function getHumanChoice () {
     return (userChoice === choice1 || userChoice === choice2 || userChoice === choice3) ? userChoice : "Wrong move, friend." 
 }
 
-
+function playRound (humMove, compMove) {
+    let move1 = humMove();
+    let move2 = compMove();
+    if (move1.length > move2.length) {
+        humanScore++
+    } else if (move1.length < move2.length) {
+        computerScore++
+    } else {
+        console.log("It's a tie!")
+    }
+}
