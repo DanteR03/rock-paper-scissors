@@ -1,8 +1,6 @@
 const choice1 = "rock";
 const choice2 = "paper";
 const choice3 = "scissors";
-let humanScore = 0;
-let computerScore = 0;
 
 function getComputerChoice () {
     let num = Math.floor(Math.random() * 3);
@@ -17,17 +15,38 @@ function getComputerChoice () {
 
 function getHumanChoice () {
     let userChoice = window.prompt("Choose your move").toLowerCase();
-    return (userChoice === choice1 || userChoice === choice2 || userChoice === choice3) ? userChoice : "Wrong move, friend." 
+    if (userChoice === choice1 || userChoice === choice2 || userChoice === choice3) {
+        return userChoice;
+    }
 }
 
-function playRound (humMove, compMove) {
-    let move1 = humMove();
-    let move2 = compMove();
-    if (move1.length > move2.length) {
-        humanScore++
-    } else if (move1.length < move2.length) {
-        computerScore++
+function playGame () {
+    let humanScore = 0;
+    let computerScore = 0;
+    function playRound () {
+        let move1 = getHumanChoice();
+        let move2 = getComputerChoice();
+        if (move1.length > move2.length) {
+            humanScore++
+            console.log("Player wins this round!");
+        } else if (move1.length < move2.length) {
+            computerScore++
+            console.log("Computer wins this round!");
+        } else {
+            console.log("It's a tie!");
+        }
+    }
+    playRound ()
+    playRound ()
+    playRound ()
+    playRound ()
+    playRound ()
+
+    if (humanScore > computerScore) {
+        console.log("Player wins!")
+    } else if (computerScore > humanScore) {
+        console.log("Computer wins!")
     } else {
-        console.log("It's a tie!")
+        console.log("The game is tied! Nobody wins!");
     }
 }
