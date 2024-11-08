@@ -1,7 +1,10 @@
+const choice1 = "rock";
+const choice2 = "paper";
+const choice3 = "scissors";
+let humanScore = 0;
+let computerScore = 0;
+
 function getComputerChoice () {
-    const choice1 = "rock";
-    const choice2 = "paper";
-    const choice3 = "scissors";
     let num = Math.floor(Math.random() * 3);
     if (num === 0) {
         return choice1;
@@ -11,3 +14,10 @@ function getComputerChoice () {
         return choice3;
     }
 }
+
+function getHumanChoice () {
+    let userChoice = window.prompt("Choose your move").toLowerCase();
+    return (userChoice === choice1 || userChoice === choice2 || userChoice === choice3) ? userChoice : "Wrong move, friend." 
+}
+
+
