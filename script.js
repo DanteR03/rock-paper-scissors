@@ -16,6 +16,7 @@ const computerScoreElement = document.querySelector("#computer-score");
 const playerMoveElement = document.querySelector("#player-move");
 const computerMoveElement = document.querySelector("#computer-move");
 const resultElement = document.querySelector("#result");
+const gameResultElement = document.querySelector("#game-result");
 
 function getComputerChoice () {
     let num = Math.floor(Math.random() * 3);
@@ -57,8 +58,13 @@ function playRound (move1) {
             resultElement.textContent = "Player won!";
         };
     };
-    humanScoreElement.textContent = humanScore;
-    computerScoreElement.textContent = computerScore;
+    if (humanScore === 5 && humanScore > computerScore) {
+        gameResultElement.textContent = "Player won the game!";
+    } else if (computerScore === 5 && computerScore > humanScore) {
+        gameResultElement.textContent = "Computer won the game!";
+    }
+    humanScoreElement.textContent = `Human score: ${humanScore}`;
+    computerScoreElement.textContent = `Computer score: ${computerScore}`;
     playerMoveElement.textContent = `Player move: ${move1}`
     computerMoveElement.textContent = `Computer move: ${move2}`;
 };
