@@ -1,6 +1,15 @@
 const choice1 = "rock";
 const choice2 = "paper";
 const choice3 = "scissors";
+let humanScore = 0;
+let computerScore = 0;
+
+const buttons = document.querySelectorAll("button");
+buttons.forEach((button) => {
+    button.addEventListener("click", () => {
+        playRound(button.id);
+    })
+});
 
 function getComputerChoice () {
     let num = Math.floor(Math.random() * 3);
@@ -20,33 +29,35 @@ function getHumanChoice () {
     }
 }
 
-function playGame () {
-    let humanScore = 0;
-    let computerScore = 0;
-    function playRound () {
-        let move1 = getHumanChoice();
-        let move2 = getComputerChoice();
-        if (move1.length > move2.length) {
-            humanScore++
-            console.log("Player wins this round!");
-        } else if (move1.length < move2.length) {
-            computerScore++
-            console.log("Computer wins this round!");
-        } else {
-            console.log("It's a tie!");
-        }
-    }
-    playRound ()
-    playRound ()
-    playRound ()
-    playRound ()
-    playRound ()
 
-    if (humanScore > computerScore) {
-        console.log("Player wins!")
-    } else if (computerScore > humanScore) {
-        console.log("Computer wins!")
-    } else {
-        console.log("The game is tied! Nobody wins!");
-    }
-}
+function playRound (move1) {
+    let move2 = getComputerChoice();
+    console.log(move1, move2, humanScore, computerScore);
+    if (move1 === move2) {
+        console.log("It's a tie!");
+    } else if (move1 === "rock") {
+        if (move2 === "paper") {
+            computerScore++
+            console.log("Computer won!");
+        } else {
+            humanScore++
+            console.log("Player won!");
+        }
+    } else if (move1 === "paper") {
+        if (move2 === "scissors") {
+            computerScore++
+            console.log("Computer won!");
+        } else {
+            humanScore++
+            console.log("Player won!");
+        }
+    } else if (move1 === "scissors") {
+        if (move2 === "rock") {
+            computerScore++
+            console.log("Computer won!");
+        } else {
+            humanScore++
+            console.log("Player won!");
+        };
+    };
+};
